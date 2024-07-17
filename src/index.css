@@ -1,22 +1,30 @@
 body {
-  font-family: "Montserrat", sans-serif;;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Login */
-.login{
-  background-color: #0AA689;
-  margin: 0 auto;
+.login {
+  padding: 20px;
+  text-align: center;
 }
 
 .character-grid {
   display: grid;
-  flex-wrap: wrap;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 30px;
+  margin-top: 57px;
 }
 
 .character-card {
-  width: 50px;
-  height: 50px;
+  width: 80%;
+  height: 80%;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
@@ -57,6 +65,6 @@ body {
 
 @media (max-width: 600px) {
   .character-card {
-      width: 100%;
+    width: 100%;
   }
 }
