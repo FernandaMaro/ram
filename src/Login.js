@@ -4,14 +4,15 @@ import { useNavigate } from "react-router-dom";
 const Login = ({ setAuth }) => {
   const [usuario, setUser] = useState("");
   const [contraseña, setPassword] = useState("");
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const login = () => {
     if (usuario === "Rick" && contraseña === "Morty") {
       setAuth(true);
       navigate("/home");
     } else {
-      alert("Usuario o contraseña incorrectos");
+      setError('Usuario o contraseña incorrectos');
     }
   };
 
@@ -19,7 +20,7 @@ const Login = ({ setAuth }) => {
     <main>
       <section className="container">
         <div className="login">
-          <h2>Inicia sesión</h2>
+          <h1>Inicia sesión</h1>
           <input
             type="text"
             placeholder="Usuario"
@@ -32,7 +33,8 @@ const Login = ({ setAuth }) => {
             value={contraseña}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleLogin}>Ingresar</button>
+          <button className="btn" onClick={login}>Ingresar</button>
+          {error && <p id="error">{error}</p>}
         </div>
       </section>
     </main>
