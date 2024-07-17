@@ -16,7 +16,7 @@ const Login = ({ setAuth }) => {
     };
 
     return (
-        <div>
+        <div className="login">
             <h2>Inicia sesión</h2>
             <input
                 type="text"
