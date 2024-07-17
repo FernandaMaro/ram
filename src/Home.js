@@ -5,7 +5,7 @@ import CharacterModal from "./CharacterModal";
 import Filtro from "./Filtro";
 import logo from './img/Rick-And-Morty-Logo.png';
 import Spinner from "./spinner";
-
+import Paginacion from "./Paginacion";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -18,12 +18,14 @@ const Home = () => {
     status: "",
     species: "",
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
         let allCharacters = [];
-        for (let i = 1; i <= 3; i++) {
+        for (let i = 1; i <= 10; i++) {
           const response = await axios.get(
             `https://rickandmortyapi.com/api/character?page=${i}`
           );
@@ -33,7 +35,7 @@ const Home = () => {
         setFilteredCharacters(allCharacters);
         setLoading(false);
       } catch (error) {
-        setError("Error al cargar los personajes");
+        setError("Error at loading characters");
         setLoading(false);
       }
     };
@@ -50,20 +52,32 @@ const Home = () => {
         character.species.toLowerCase().includes(species.toLowerCase())
     );
     setFilteredCharacters(filtered);
+    setCurrentPage(1); 
   }, [searchCriteria, characters]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const isFiltering = searchCriteria.name || searchCriteria.status || searchCriteria.species;
+
+  const displayedCharacters = isFiltering ? filteredCharacters : filteredCharacters.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   if (loading) return <Spinner />;
   if (error) return <div>{error}</div>;
 
   return (
-    <div >
+    <div>
       <div className="container">
-      <img id="logo" src={logo} alt="rick and morty logo"/>
-        <h1 id="wiki" >Wiki</h1>
+        <img id="logo" src={logo} alt="rick and morty logo"/>
+        <h1 id="wiki">Wiki</h1>
         <Filtro onSearch={setSearchCriteria} />
       </div>
       <div className="character-grid">
-        {filteredCharacters.map((character) => (
+        {displayedCharacters.map((character) => (
           <CharacterCard
             key={character.id}
             character={character}
@@ -71,6 +85,14 @@ const Home = () => {
           />
         ))}
       </div>
+      {!isFiltering && (
+        <Paginacion
+          totalItems={filteredCharacters.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      )}
       {selectedCharacter && (
         <CharacterModal
           character={selectedCharacter}

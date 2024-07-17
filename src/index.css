@@ -11,6 +11,8 @@ body {
   height: 100%;
   object-fit: fill;
   color: #141726;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -59,7 +61,7 @@ p {
   width: 400px;
 }
 /* Labels */
-.label,.btn{
+.label,.btn, button{
   font-family: inherit;
   font-weight: 600;
   border: none;
@@ -89,10 +91,16 @@ option:hover{
 }
 
 /* btn */
-.btn {
+.btn, button {
   font-size: 16px;
   color: inherit;
   background-color: #06adbf;
+}
+
+button{
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 10px 10px 10px 0px;
 }
 /* spinner */
 .loading-spinner {
