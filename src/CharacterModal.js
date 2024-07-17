@@ -5,7 +5,8 @@ const CharacterModal = ({ character, onClose }) => {
 
     return (
         <div className="modal">
-            <div className="modal-content">
+            <div className="modal-content" 
+            >
                 <span className="close" onClick={onClose}>&times;</span>
                 <img src={image} alt={name} />
                 <h3>{name}</h3>

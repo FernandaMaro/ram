@@ -4,6 +4,8 @@ import CharacterCard from "./CharacterCard";
 import CharacterModal from "./CharacterModal";
 import Filtro from "./Filtro";
 import logo from './img/Rick-And-Morty-Logo.png';
+import Spinner from "./spinner";
+
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -50,14 +52,14 @@ const Home = () => {
     setFilteredCharacters(filtered);
   }, [searchCriteria, characters]);
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <Spinner />;
   if (error) return <div>{error}</div>;
 
   return (
     <div >
       <div className="container">
       <img id="logo" src={logo} alt="rick and morty logo"/>
-        <h1>Rick and Morty Wiki</h1>
+        <h1 id="wiki" >Wiki</h1>
         <Filtro onSearch={setSearchCriteria} />
       </div>
       <div className="character-grid">

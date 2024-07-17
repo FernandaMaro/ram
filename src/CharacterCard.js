@@ -11,8 +11,14 @@ const CharacterCard = ({ character, onClick }) => {
         return "#82BF45";
       case "Humanoid":
         return "#F28322";
-      default:
+      case "Poopybutthole":
         return "#F2B199";
+        case "Mythological Creature":
+        return "#328C40";
+        case "Animal":
+        return "#AA71A7";
+      default:
+        return "#C7D941";
     }
   };
 

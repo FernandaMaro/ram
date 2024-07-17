@@ -26,7 +26,7 @@ const Filtro = ({ onSearch }) => {
             </select>
             <select className='label' value={species} onChange={e => setSpecies(e.target.value)}>
                 <option value="">All</option>
-                <option value="Human">Humano</option>
+                <option value="Human">Human</option>
                 <option value="Alien">Alien</option>
                 <option value="Humanoid">Humanoid</option>
                 <option value="Animal">Animal</option>
@@ -34,7 +34,7 @@ const Filtro = ({ onSearch }) => {
                 <option value="Poopybutthole">Poopybutthole</option>
                 <option value="unknown">Unknown</option>
             </select>
-            <button className='btn' onClick={handleSearch}>Buscar</button>
+            <button className='btn' onClick={handleSearch}>Filter</button>
         </div>
     );
 };

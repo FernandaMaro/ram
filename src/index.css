@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "get_schwifty";
+  src: local("get_schwifty"), url(fonts/get_schwifty.ttf);
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0px;
@@ -16,10 +21,10 @@ body {
 }
 
 /* Tipografia */
-h1{
-  font-size: 50px;
+h1 {
+  font-size: 40px;
   color: whitesmoke;
-  font-weight:800;
+  font-weight: 800;
 }
 h3 {
   font-weight: 700;
@@ -29,9 +34,9 @@ p {
   font-weight: 400;
   margin: 10px 0px;
 }
-#error{
+#error {
   color: whitesmoke;
-  font-weight:bold;
+  font-weight: bold;
 }
 /* Login */
 .login {
@@ -40,22 +45,74 @@ p {
 }
 
 /* Layout */
-
-#logo{
-  width: 100px;
+#wiki {
+  font-family: "get_schwifty";
+  color: #06adbf;
+  text-shadow:
+  0 0 2px #000, -2px -2px 0 #8fbf60, 2px -2px 0 #8fbf60, -2px 2px 0 #8fbf60,
+    2px 2px 0 #8fbf60, 2px 0px 0 #8fbf60, -2px 0px 0 #8fbf60, 0px 2px 0 #8fbf60,
+    0px -2px 0 #8fbf60;
+  margin: auto auto 40px 0;
+  rotate: -10deg;
 }
-
-.btn{
+#logo {
+  width: 400px;
+}
+/* Labels */
+.label,.btn{
+  font-family: inherit;
+  font-weight: 600;
   border: none;
-  border-radius: 10px ;
+  border-radius: 10px;
   padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  color: inherit;
-  background-color: #06ADBF;
 }
 
-/* Card */
+.label{
+  color: #141726;
+  width: 100px;
+  background-color: whitesmoke;
+  margin: 0 10px 0 0;
+}
+
+.label:active, .label:focus  {
+  background-color: #bdf189; 
+
+}
+
+option {
+  font-weight: 600; 
+  background-color: whitesmoke;
+  color: #141726; 
+}
+option:hover{
+  background-color: #8fbf60;
+}
+
+/* btn */
+.btn {
+  font-size: 16px;
+  color: inherit;
+  background-color: #06adbf;
+}
+/* spinner */
+.loading-spinner {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  border: 16px solid #f3f3f300; 
+  border-top: 16px solid #3498db; 
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Cards */
 .character-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -65,6 +122,9 @@ p {
 }
 
 .character-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
   width: 360px;
   height: 360px;
@@ -74,18 +134,18 @@ p {
   cursor: pointer;
 }
 
-.character-card img, .modal-content img {
+.character-card img,
+.modal-content img {
   display: block;
   margin: auto;
   width: 50%;
   border-radius: 50%;
-  border: 5px solid #F2DD72 ;
+  border: 5px solid #f2dd72;
 }
 
 .character-card:hover,
 .character-card:active {
-  width: 90%;
-  height: 90%;
+  transform: scale(1.1);
 }
 
 .modal {
@@ -101,7 +161,7 @@ p {
 }
 
 .modal-content {
-  background:#1C2140;
+  background: #1c2140;
   color: whitesmoke;
   padding: 20px;
   border-radius: 20px;
@@ -118,13 +178,13 @@ p {
 
 @media (max-width: 900px) {
   .character-grid {
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 600px) {
   .character-grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .character-card {

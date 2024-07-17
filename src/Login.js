@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from './img/Rick-And-Morty-Logo.png';
+
 
 const Login = ({ setAuth }) => {
   const [usuario, setUser] = useState("");
   const [contraseña, setPassword] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const login = () => {
@@ -12,28 +14,32 @@ const Login = ({ setAuth }) => {
       setAuth(true);
       navigate("/home");
     } else {
-      setError('Usuario o contraseña incorrectos');
+      setError("User or password incorrect");
     }
   };
 
   return (
     <main>
-      <section className="container">
+      <section>
         <div className="login">
-          <h1>Inicia sesión</h1>
-          <input
+          <img id="logo" src={logo} alt="rick and morty logo" />
+          <h1>Log In</h1>
+          <input className="label"
             type="text"
-            placeholder="Usuario"
+            placeholder="User"
             value={usuario}
             onChange={(e) => setUser(e.target.value)}
           />
           <input
+            className="label"
             type="password"
-            placeholder="Contraseña"
+            placeholder="Pasword"
             value={contraseña}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="btn" onClick={login}>Ingresar</button>
+          <button className="btn" onClick={login}>
+          Log In
+          </button>
           {error && <p id="error">{error}</p>}
         </div>
       </section>
