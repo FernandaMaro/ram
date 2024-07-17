@@ -6,11 +6,11 @@ const CharacterCard = ({ character, onClick }) => {
     const getBackgroundColor = (species) => {
         switch (species) {
             case 'Human':
-                return 'lightblue';
+                return '#06ADBF';
             case 'Alien':
-                return 'lightgreen';
+                return '#82BF45';
             default:
-                return 'lightgray';
+                return '#F2B199';
         }
     };
 
